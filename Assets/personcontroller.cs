@@ -119,7 +119,10 @@ public class personcontroller : MonoBehaviour
 
     public void StartSmoking()
     {
-        smokeSystem.GetComponent<ParticleSystem>().enableEmission = true;
+        if (!personmaker.Instance.ecigActive)
+        {
+            smokeSystem.GetComponent<ParticleSystem>().enableEmission = true;
+        }
         acting = true;
         animator.enabled = false;
         GetComponent<SpriteRenderer>().sprite = smokingSprite;
